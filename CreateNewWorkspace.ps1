@@ -5,11 +5,11 @@
 
 
 #Variable sets the foldername for the YEAR
-$Yfolder = "C:\Users\mmuya\Documents\Workspace\$((Get-Date).ToString('yyyy'))";
+$Yfolder = $([Environment]::GetFolderPath('MyDocuments') + "\Workspace\$((Get-Date).ToString('yyyy'))");
 #Variable sets the foldername for the MONTH
-$Mfolder = "C:\Users\mmuya\Documents\Workspace\$((Get-Date).ToString('yyyy'))\$((Get-Date).ToString('MM'))";
+$Mfolder = $([Environment]::GetFolderPath('MyDocuments') + "\Workspace\$((Get-Date).ToString('yyyy'))\$((Get-Date).ToString('MM'))");
 #Variable sets the foldername for the Folder I want to create
-$Resultfolder = "C:\Users\mmuya\Documents\Workspace\$((Get-Date).ToString('yyyy'))\$((Get-Date).ToString('MM'))\$((Get-Date).ToString('yyyy-MM-dd'))";
+$Resultfolder = $([Environment]::GetFolderPath('MyDocuments') + "\Workspace\$((Get-Date).ToString('yyyy'))\$((Get-Date).ToString('MM'))\$((Get-Date).ToString('yyyy-MM-dd'))");
 
 # If Folder with YEAR does not exist, create it
 if ( -Not (Test-Path $Yfolder) ) {
@@ -26,7 +26,7 @@ if (Test-Path $Mfolder) {
     # Checking if the foldername for the Folder I want to create already exists
     if ( -Not (Test-Path $Resultfolder) ) {
         # CD into the created path
-        Set-Location -Path "C:\Users\mmuya\Documents\Workspace\$((Get-Date).ToString('yyyy'))\$((Get-Date).ToString('MM'))";
+        Set-Location -Path $([Environment]::GetFolderPath('MyDocuments') + "\Workspace\$((Get-Date).ToString('yyyy'))\$((Get-Date).ToString('MM'))");
         # Create the folder "YYYY-MM-dd"
         New-Item -ItemType Directory -Path ".\$((Get-Date).ToString('yyyy-MM-dd'))";
         # Open the Folder in Explorer
