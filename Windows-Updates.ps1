@@ -1,4 +1,4 @@
-Install-Module -Name PSWindowsUpdate –Force
+Install-Module -Name PSWindowsUpdate -Force
 
 Get-Package -Name PSWindowsUpdate
 
@@ -12,6 +12,5 @@ Get-WindowsUpdate -AcceptAll -Download -Install
 
 Install-WindowsUpdate -AcceptAll -Install -Force
 
-Invoke-WUJob -Script {ipmo PSWindowsUpdate; Get-WindowsUpdate -Install -AcceptAll -AutoReboot| Out-File C:\Windows\PSWindowsUpdate.log } -Confirm:$false -Verbose –RunNow
-
+Invoke-WUJob -Script {ipmo PSWindowsUpdate; Get-WindowsUpdate -Install -AcceptAll -AutoReboot| Out-File C:\Windows\PSWindowsUpdate.log } -Confirm:$false -Verbose -RunNow
 
