@@ -34,6 +34,7 @@ New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\E
 New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ShowSuperHidden' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
 
 # Install needed Apps
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco feature enable -n=allowGlobalConfirmation
 choco install 7zip.install notepadplusplus.install vscode.install clamwin clamsentinel sysinternals microsoft-windows-terminal windirstat winscp.install git.install greenshot dependency-scanner dotnetfx vcredist140 -y
