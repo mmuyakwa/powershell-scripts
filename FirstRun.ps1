@@ -48,7 +48,7 @@ Get-WUInstall -MicrosoftUpdate -IgnoreUserInput -WhatIf -Verbose
 Get-WUList
 Get-WUlist -MicrosoftUpdate
 Add-WUServiceManager -ServiceID "7971f918-a847-4430-9279-4a52d1efe18d" -AddServiceFlag 7 -Confirm:$false
-Get-WindowsUpdate -AcceptAll -Download -Install
+#Get-WindowsUpdate -AcceptAll -Download -Install -Confirm:$false
 Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot -Install -Confirm:$false  | Out-File "C:\Windows\$(get-date -f yyyy-MM-dd)-WindowsUpdate.log" -force
 # Generate Scheduled-Task for Updates (No AutoReboot!)
 Invoke-WUJob -Script {ipmo PSWindowsUpdate; Get-WindowsUpdate -Install -AcceptAll -AutoReboot:$false -Confirm:$false | Out-File C:\Windows\PSWindowsUpdate.log } -Confirm:$false -Verbose -RunNow:$false

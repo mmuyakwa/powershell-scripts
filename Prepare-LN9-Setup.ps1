@@ -1,5 +1,5 @@
 # Set Variables
-[Cmdletbinding]
+﻿[Cmdletbinding]
 Param(
     [string]$Computername = "localhost"
 )
