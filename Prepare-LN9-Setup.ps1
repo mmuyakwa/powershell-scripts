@@ -1,5 +1,5 @@
 # Set Variables
-﻿[Cmdletbinding]
+[Cmdletbinding]
 Param(
     [string]$Computername = "localhost"
 )
@@ -88,6 +88,14 @@ function Net48Installed {
 
 
 # MAIN!
+
+# "Check available CPU-Cores"
+Write-Host "This System has $((Get-CimInstance Win32_ComputerSystem).NumberOfLogicalProcessors) CPU-Core(s)."
+if ((Get-CimInstance Win32_ComputerSystem).NumberOfLogicalProcessors -ge 2) {
+    Write-Host "You have enough CPU-Cores to run a Lasernet-Server." -ForegroundColor Blue -BackgroundColor Green
+} else {
+    Write-Host "Insufficient number of CPU-Cores. You need at least 2 CPU-Cores." -ForegroundColor White -BackgroundColor Red
+}
 
 # "Check available RAM"
 Write-Host "This System has $((($PysicalMemory).Capacity | Measure-Object -Sum).Sum/1GB)GB of RAM."
