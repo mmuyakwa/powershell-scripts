@@ -1,4 +1,5 @@
 # Firstrun - 2021-05-11
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force
 
 
 # Install Chrome-Browser
