@@ -1,4 +1,5 @@
 # Set Variables
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force
 ﻿[Cmdletbinding]
 Param(
     [string]$Computername = "localhost"
