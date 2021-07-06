@@ -164,3 +164,14 @@ if ($install) {
         Write-Host "If .Net 4.8 was just installed, you need to REBOOT first!!" -ForegroundColor White -BackgroundColor Red
     }
 }
+
+# Generate Lasernet-Folders
+md C:\Lasernet\Archive
+md C:\Lasernet\File_Out
+md C:\Lasernet\Grab
+md C:\Lasernet\Log
+md C:\Lasernet\Preview
+md C:\Lasernet\RunTimeData
+md C:\Lasernet\XML_Archive
+md C:\Lasernet\XML_IN
+
