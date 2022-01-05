@@ -1,0 +1,23 @@
+#get-windowsoptionalfeature -online -FeatureName "*print*"
+
+
+#get-windowsoptionalfeature -online -featurename Printing-Server-Role
+#get-windowsoptionalfeature -online -featurename Printing-LPDPrintService
+#get-windowsoptionalfeature -online -featurename Printing-LPRPortMonitor
+
+
+#Install-WindowsFeature -Name Print-Server
+
+Enable-WindowsOptionalFeature -Online -FeatureName "Printing-Server-Role" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Printing-LPDPrintService" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Printing-LPRPortMonitor" -All
+
+#Disable-WindowsOptionalFeature -Online -FeatureName "Printing-Server-Role" -All
+#Disable-WindowsOptionalFeature -Online -FeatureName "Printing-LPDPrintService"
+#Disable-WindowsOptionalFeature -Online -FeatureName "Printing-LPRPortMonitor"
+
+Get-NetAdapterBinding -ComponentID ms_tcpip6
+Disable-NetAdapterBinding -Name "Ethernet" -ComponentID ms_tcpip6
+
+telnet -p 515
+Str+D "WarteschleifeName"
