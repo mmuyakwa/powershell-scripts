@@ -9,6 +9,8 @@
 #Install-WindowsFeature -Name Print-Server
 
 Enable-WindowsOptionalFeature -Online -FeatureName "Printing-Server-Role" -All
+Set-Service -Name Spooler -StartupType Automatic
+Start-Service -Name Spooler
 Enable-WindowsOptionalFeature -Online -FeatureName "Printing-LPDPrintService" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "Printing-LPRPortMonitor" -All
 
@@ -19,5 +21,5 @@ Enable-WindowsOptionalFeature -Online -FeatureName "Printing-LPRPortMonitor" -Al
 Get-NetAdapterBinding -ComponentID ms_tcpip6
 Disable-NetAdapterBinding -Name "Ethernet" -ComponentID ms_tcpip6
 
-telnet -p 515
-Str+D "WarteschleifeName"
+#telnet -p 515
+#Str+D "WarteschleifeName"
