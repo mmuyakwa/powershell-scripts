@@ -40,3 +40,7 @@ Configuration LNServiceStates
 }
 
 LNServiceStates
+
+
+# Run Script, afterwards run following Code:
+# Start-DscConfiguration C:\Users\Administrator\LNServiceStates
