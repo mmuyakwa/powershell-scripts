@@ -18,8 +18,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName "Printing-LPRPortMonitor" -Al
 #Disable-WindowsOptionalFeature -Online -FeatureName "Printing-LPDPrintService"
 #Disable-WindowsOptionalFeature -Online -FeatureName "Printing-LPRPortMonitor"
 
+# Disable IPv6
 Get-NetAdapterBinding -ComponentID ms_tcpip6
 Disable-NetAdapterBinding -Name "Ethernet" -ComponentID ms_tcpip6
+
+# Prefer IPv4
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters" -Name DisabledComponents -PropertyType DWORD -Value "0x20"
 
 #telnet -p 515
 #Str+D "WarteschleifeName"
