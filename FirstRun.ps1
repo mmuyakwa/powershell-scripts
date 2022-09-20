@@ -34,6 +34,13 @@ New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\E
 New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'Hidden' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
 New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ShowSuperHidden' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
 
+# Change Title-Bar settings (Color-Scheme for inactive windows)
+New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\DWM' -Name 'AccentColorInactive' -Value 7102566 -PropertyType DWord -Force -ea SilentlyContinue;
+$TitleBar = "HKCU:\Software\Microsoft\Windows\DWM"
+Set-ItemProperty -Path $TitleBar -Name "ColorizationGlassAttribute" -Value 1
+Set-ItemProperty -Path $TitleBar -Name "ColorPrevalence" -Value 1
+Set-ItemProperty -Path $TitleBar -Name "Composition" -Value 1
+
 # Install needed Apps
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
