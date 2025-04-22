@@ -49,7 +49,8 @@ choco install 7zip.install notepadplusplus.install vscode.install clamwin clamse
 choco upgrade all -y
 
 # Install Ms Terminal
-winget install --id Microsoft.WindowsTerminal -e
+#winget install --id Microsoft.WindowsTerminal -e
+winget install --id Microsoft.WindowsTerminal -e -s winget --accept-source-agreements 
 
 # Windows-Updates
 Install-Module -Name PSWindowsUpdate -Force
